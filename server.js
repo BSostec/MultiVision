@@ -11,9 +11,9 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
-function compile (str, path) {
+function compile(str, path) {
     return stylus(str).set('filename', path);
-    
+
 }
 
 app.set('views', __dirname + '/server/views');
@@ -29,7 +29,13 @@ app.use(stylus.middleware(
 ));
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost/multivision');
+if (env === 'development') {
+    mongoose.connect('mongodb://localhost/multivision');
+} else {
+    mongoose.connect('mongodb://bartolo:philips@ds021026.mlab.com:21026/multivision');
+}
+
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error ...'));
 db.once('open', function callback() {
@@ -44,7 +50,6 @@ Message.findOne().exec(function (err, messageDoc) {
 });
 
 
-
 app.get('/partials/:partialPath', function (req, res) {
     res.render('partials/' + req.params.partialPath);
 });
@@ -55,6 +60,6 @@ app.get('*', function (req, res) {
     });
 });
 
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log('Listening on port ' + port + '...');
