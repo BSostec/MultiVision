@@ -1,7 +1,6 @@
 /**
  * Created by Bartolo on 16/09/2016.
  */
-
 angular.module('app').controller('mvMainCtrl', function ($scope) {
     $scope.courses = [
         {name: 'C# for Sociopaths', featured: true, published: new Date('10/5/2013')},
