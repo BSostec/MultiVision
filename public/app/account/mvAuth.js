@@ -25,6 +25,13 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
                 dfd.resolve();
             });
             return dfd.promise;
+        },
+        authorizeCurrentUserForRoutes: function (role) {
+            if(mvIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
         }
     }            
 });
