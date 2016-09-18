@@ -12,7 +12,7 @@ module.exports ={
     },
     production: {
         rootPath: rootPath,
-        db: 'mongodb://bartolo:philips@ds021026.mlab.com:21026/multivisio',
+        db: 'mongodb://bartolo:philips@ds021026.mlab.com:21026/multivision',
         port: process.env.PORT || 80
     }
 };
