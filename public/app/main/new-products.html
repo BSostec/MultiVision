@@ -1,0 +1,1 @@
+<div class="panel panel-primary"><div class="panel-heading text-center">New Products</div><div class="panel-body"><div ng-repeat="product in products | orderBy:'descrizione':true | limitTo: 10" class="row"><div class="col-md-3"><a href="/products/{{product._id}}">{{product.codice}}</a></div><div class="col-md-9">{{product.descrizione}}</div></div></div></div>

@@ -1,0 +1,7 @@
+.panel.panel-primary
+    .panel-heading.text-center New Products
+    .panel-body
+        .row(ng-repeat="product in products | orderBy:'descrizione':true | limitTo: 10")
+            .col-md-3
+                a(href="/products/{{product._id}}") {{product.codice}}
+            .col-md-9 {{product.descrizione}}
