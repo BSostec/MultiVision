@@ -5,6 +5,7 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
     courses = require('../controllers/courses'),
+    products = require('../controllers/products'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -16,6 +17,10 @@ module.exports = function (app) {
 
     app.get('/api/courses', courses.getCourses);
     app.get('/api/courses/:id', courses.getCourseById);
+
+    app.get('/api/products', products.getProducts);
+    app.get('/api/products/:id', products.getProductById);
+
 
 
     app.get('/partials/*', function (req, res) {
